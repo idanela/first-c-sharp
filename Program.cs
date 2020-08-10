@@ -104,7 +104,7 @@ namespace C20_Ex01_1
 
         private static bool IsPowerOfTwo(int i_num)// return about a number if it is a power of two.
         {
-            if (i_num!=1 &&(i_num && (i_num - 1)) == 0)// if the number is a power of two , then number-1 will have lower-order bits set.
+            if (i_num!=1 &&(i_num & (i_num - 1)) == 0)// if the number is a power of two , then number-1 will have lower-order bits set.
             {
                 return true;
             }

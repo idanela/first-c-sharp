@@ -6,35 +6,49 @@ namespace C20_Ex01_1
     {
         public static void Main()
         {
-            preformAnalysisOnBinaryNumbers();
+            int i_NumberOfBinaryStrings = 4;
+            string[] i_BinaryStrings = GetBinaryStringsFromUser(i_NumberOfBinaryStrings);
+            Console.WriteLine("the decimal representations of the binary numbers above are: ");
+            printDecimalRepresentationOfBinaryNumbers(i_BinaryStrings, i_NumberOfBinaryStrings);
+            preformAnalysisOnBinaryStrings(i_BinaryStrings, i_NumberOfBinaryStrings);
         }
-        public static void preformAnalysisOnBinaryNumbers() //Preform analysis on a few binary numbers.
+        public static string[] GetBinaryStringsFromUser(int i_SizeOfStringArray)
         {
-            int i_NumOfBinaryNumbers = 4;
-            string[] output = new string[i_NumOfBinaryNumbers]; //allocates a string array which will hold the numbers from user's input.
-            Console.WriteLine("please enter 4 numbers in a binary format 8 digit each: ");
-            for (int i = 0; i < i_NumOfBinaryNumbers; i++)
+            string[] i_BinaryStrings = new string[i_SizeOfStringArray]; //allocates a string array which will hold the numbers from user's input.
+            Console.WriteLine("please enter 4 numbers in a binary format, 8 digit each: ");
+            for (int i = 0; i < i_SizeOfStringArray; i++)
             {
-                output[i] = getInputFromUser();
-                bool i_isValidBinaryNum = checkIfInputIsValid(output[i]); // Checks if the user inserted a valid string(8 number string of 1's and 0's).
+                i_BinaryStrings[i] = getInputFromUser();
+                bool i_isValidBinaryNum = checkIfInputIsValid(i_BinaryStrings[i]); // Checks if the user inserted a valid string(8 number string of 1's and 0's).
                 if (!i_isValidBinaryNum)
                 {
                     Console.WriteLine("the input you have entered is invalid. please try again. ");
                     i = 0; //If one of the numbers is invalid, gets new input.
                 }
             }
-            float i_AverageNumbersOfZero = caluculateAverageNumbersOfACertainCharecter(output, i_NumOfBinaryNumbers, '0');//Gets average number of 0's from all string that were inserted.
-            float i_AverageNumbersOfOnes = caluculateAverageNumbersOfACertainCharecter(output, i_NumOfBinaryNumbers, '1');//Gets average number of 1's from all string that were inserted.
-            int i_HowManyArePowerOfTwo = checkHowManyArePowerOfTWO(output, i_NumOfBinaryNumbers);
-            int HowManyAreAscendingSeries = checkHowManyAreAscendingSeries(output, i_NumOfBinaryNumbers);
-            float i_averageOfNumbers = calculateAverageOfNumbers(output, i_NumOfBinaryNumbers);
+            return i_BinaryStrings;
         }
-
-
+        private static void printDecimalRepresentationOfBinaryNumbers(string[] i_BinaryStrings, int i_NumberOfBinaryStrings) // takes a binary string array and print each binar string decimal representation. 
+        {
+            for (int i = 0; i < i_NumberOfBinaryStrings; i++)
+            {
+                int i_DecimalRepresentaition = convertBinaryStringtToDecimalNumber(i_BinaryStrings[i]);
+                Console.Write(i_DecimalRepresentaition + ' ');
+            }
+        }
+        public static void preformAnalysisOnBinaryStrings(string[]i_BinaryStrings,int i_NumberOfBinaryStrings) //Preform analysis on a few binary numbers.
+        {
+            float i_AverageNumbersOfZero = caluculateAverageNumbersOfACertainCharecter(i_BinaryStrings, i_NumberOfBinaryStrings, '0');//Gets average number of 0's from all string that were inserted.
+            float i_AverageNumbersOfOnes = caluculateAverageNumbersOfACertainCharecter(i_BinaryStrings, i_NumberOfBinaryStrings, '1');//Gets average number of 1's from all string that were inserted.
+            int i_HowManyArePowerOfTwo = checkHowManyArePowerOfTwo(i_BinaryStrings, i_NumberOfBinaryStrings);
+            int HowManyAreAscendingSeries = checkHowManyAreAscendingSeries(i_BinaryStrings, i_NumberOfBinaryStrings);
+            float i_averageOfNumbers = calculateAverageOfNumbers(i_BinaryStrings, i_NumberOfBinaryStrings);
+        }
+     
         private static String getInputFromUser() //Gets input fron user.
         {
-            string io_BinaryNumber = Console.ReadLine();
-            return io_BinaryNumber;
+            string i_BinaryNumber = Console.ReadLine();
+            return i_BinaryNumber;
         }
         private static bool checkIfInputIsValid(string i_binaryNum)// Checks if a string has 8 characters and only 1's and 0's.
         {
@@ -52,59 +66,58 @@ namespace C20_Ex01_1
             return true;
         }
         
-        private static float caluculateAverageNumbersOfACertainCharecter(string[] i_BinaryNumbers, int i_NumOfBinaryNumbers, char i_ChosenCharecter)//Calculates the average apperances of a cerain character in a string array.
+        private static float caluculateAverageNumbersOfACertainCharecter(string[] i_BinaryNumbers, int i_NumberOfBinaryStrings, char i_ChosenCharacter)//Calculates the average apperances of a cerain character in a string array.
         {
-            float i_NumOfChars = 0;
+            float i_NumOfChosenCharInString = 0;
 
-            for (int i = 0; i < i_NumOfBinaryNumbers; i++)
+            for (int i = 0; i < i_NumberOfBinaryStrings; i++)
             {
                 for (int j = 0; j < i_BinaryNumbers[i].Length; j++)
                 {
-                    if (i_BinaryNumbers[i][j] == i_ChosenCharecter)// For each character in the sring check if the chosen character.
+                    if (i_BinaryNumbers[i][j] == i_ChosenCharacter)// For each character in the string check if the chosen character.
                     {
-                        i_NumOfChars++;
+                        i_NumOfChosenCharInString++;
                     }
 
                 }
             }
-            float i_AverageNumberOfChar = i_NumOfChars / i_NumOfBinaryNumbers;// Calculate average number of a certain character.
+            float i_AverageNumberOfChar = i_NumOfChosenCharInString / i_NumberOfBinaryStrings;// Calculate average number of a certain character.
             return i_AverageNumberOfChar; // Returns average number of a certain character.
         }
-
-
-        private static int checkHowManyArePowerOfTWO(string[] i_BinaryNumbers, int i_NumOfBinaryNumbers)// Checks how many strings (which represent a binary number) are a power of two.
+        
+        private static int checkHowManyArePowerOfTwo(string[] i_BinaryNumbers, int i_NumberOfBinaryStrings)// Checks how many strings (which represent a binary number) are a power of two.
         {
-            int i_AmountOfNumbersWhichIsPowerOfTwo = 0;
-            for (int i = 0; i < i_NumOfBinaryNumbers; i++)
+            int i_AmountOfNumbersWhichArePowerOfTwo = 0;
+            for (int i = 0; i < i_NumberOfBinaryStrings; i++)
             {
-                int i_BinaryNum = convertBinaryStringtToInt(i_BinaryNumbers[i]); //Converts a string to the binary number that its represent.
-                if (IsPowerOfTwo(i_BinaryNum))
+                int i_BinaryNum = convertBinaryStringtToDecimalNumber(i_BinaryNumbers[i]); //Converts a string to the binary number that its represent.
+                if (IsPowerOfTwo(i_BinaryNum)==true)
                 {
-                    i_AmountOfNumbersWhichIsPowerOfTwo++;
+                    i_AmountOfNumbersWhichArePowerOfTwo++;
                 }
             }
-            return i_AmountOfNumbersWhichIsPowerOfTwo;
+            return i_AmountOfNumbersWhichArePowerOfTwo;
         }
 
 
-        private static int convertBinaryStringtToInt(string i_BinaryNum) // convert a string that represent a binary number to it's decimal form.
+        private static int convertBinaryStringtToDecimalNumber(string i_BinaryNum) // convert a string that represent a binary number to it's decimal form.
         {
-            int i_ActualBinaryNumber = 0;
+            int i_ActualDecimalNumber = 0;
             int i_BinaryDigit;
             int i_CurrentPower = 1;
             for (int i = i_BinaryNum.Length - 1; i > 0; i++)
             {
                 i_BinaryDigit = i_BinaryNum[i] - '0';// Calculate the int value of the character.
-                i_ActualBinaryNumber += (i_CurrentPower * i_BinaryDigit);// Caculate the cuurent digit nultiply iy by 2^i and add it to o_ActualBinaryNumber.
+                i_ActualDecimalNumber += (i_CurrentPower * i_BinaryDigit);// Caculate the cuurent digit nultiply iy by 2^i and add it to o_ActualBinaryNumber.
                 i_CurrentPower *= 2; //Prepare the current power for next iteration.
             }
-            return i_ActualBinaryNumber;
+            return i_ActualDecimalNumber;
         }
 
 
-        private static bool IsPowerOfTwo(int i_num)// return about a number if it is a power of two.
-        {
-            if (i_num!=1 &&(i_num & (i_num - 1)) == 0)// if the number is a power of two , then number-1 will have lower-order bits set.
+        private static bool IsPowerOfTwo(int i_NumWhichIsPossiblePowerOfTwo)// return about a number if it is a power of two.
+        { 
+            if (i_NumWhichIsPossiblePowerOfTwo!=1 &&(i_NumWhichIsPossiblePowerOfTwo & (i_NumWhichIsPossiblePowerOfTwo - 1)) == 0)// if the number is a power of two , then (number-1 will have lower-order bits set.
             {
                 return true;
             }
@@ -120,7 +133,7 @@ namespace C20_Ex01_1
             int i_BinaryNum;
             for (int i = 0; i < i_AmountOfBinaryNumbers; i++)
             {
-                i_BinaryNum = convertBinaryStringtToInt(i_BinaryNumbers[i]);//Converts the string(of zeros and ones) to decimal representaion.
+                i_BinaryNum = convertBinaryStringtToDecimalNumber(i_BinaryNumbers[i]);//Converts the string(of zeros and ones) to decimal representaion.
                 if (isAscendingSeries(i_BinaryNum)) //Checks if the number is an ascending series.
                 {
                     i_HowManyAreAscendingSeries++;
@@ -129,25 +142,25 @@ namespace C20_Ex01_1
             return i_HowManyAreAscendingSeries;
         }
 
-        private static float calculateAverageOfNumbers(string[] i_BinaryNumbers, int i_NumOfBinaryNumbers)
+        private static float calculateAverageOfNumbers(string[] i_BinaryNumbers, int i_NumberOfBinaryStrings)// Calculate average of numbers represented as binary string.
         {
-            float i_SumOfAllBinaryNumbers = 0;
-            for(int i= 0; i<i_NumOfBinaryNumbers; i_NumOfBinaryNumbers++)
+            float i_SumOfAllNumbers = 0;
+            for(int i= 0; i< i_NumberOfBinaryStrings; i++)
             {
-                i_SumOfAllBinaryNumbers += convertBinaryStringtToInt(i_BinaryNumbers[i]);
+                i_SumOfAllNumbers += convertBinaryStringtToDecimalNumber(i_BinaryNumbers[i]); //Calculates the decimal value of binary string and add it to sum of all the numbers.
             }
-            float i_Average = i_SumOfAllBinaryNumbers / i_NumOfBinaryNumbers;
+            float i_Average = i_SumOfAllNumbers / i_NumberOfBinaryStrings; // Caculate average.
             return i_Average;
         }
 
-        private static bool isAscendingSeries(int i_BinaryNum)// Checks is a number's digits are ascending series.
+        private static bool isAscendingSeries(int i_potentialAscendingSeriesNumber)// Checks is a number's digits are ascending series.
         {
             int i_CurrentLessSignificantNumber;
-            while (i_BinaryNum!=0)
+            while (i_potentialAscendingSeriesNumber != 0)
             {
-                i_CurrentLessSignificantNumber = i_BinaryNum % 10;
-                i_BinaryNum = i_BinaryNum / 10;
-                if (i_BinaryNum % 10 <= i_CurrentLessSignificantNumber)//Checks if the 2 Least significant digits are acsending series.
+                i_CurrentLessSignificantNumber = i_potentialAscendingSeriesNumber % 10;
+                i_potentialAscendingSeriesNumber = i_potentialAscendingSeriesNumber / 10;
+                if (i_potentialAscendingSeriesNumber % 10 <= i_CurrentLessSignificantNumber)//Checks if the 2 Least significant digits are acsending series.
                 {
                     return false;
                 }

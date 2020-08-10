@@ -147,7 +147,7 @@ namespace C20_Ex01_1
             {
                 i_CurrentLessSignificantNumber = i_BinaryNum % 10;
                 i_BinaryNum = i_BinaryNum / 10;
-                if (i_BinaryNum % 10 <= i_CurrentLessSignificantNumber)//Checks if the 2 Least significant digits are acsending series.
+                if (i_BinaryNum % 10 <= i_CurrentLessSignificantNumber)//Checks if the 2 least significant digits are acsending series.
                 {
                     return false;
                 }

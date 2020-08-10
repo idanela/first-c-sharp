@@ -23,8 +23,8 @@ namespace C20_Ex01_1
                     i = 0; //If one of the numbers is invalid, gets new input.
                 }
             }
-            int i_AverageNumbersOfzero = caluculateAverageNumbersOfACertainCharecter(output, i_NumOfBinaryNumbers, '0'); //Gets average number of 0's from all string that were inserted.
-            int i_AverageNumbersOfOnes = caluculateAverageNumbersOfACertainCharecter(output, i_NumOfBinaryNumbers, '1');
+            float i_AverageNumbersOfZero = caluculateAverageNumbersOfACertainCharecter(output, i_NumOfBinaryNumbers, '0');//Gets average number of 0's from all string that were inserted.
+            float i_AverageNumbersOfOnes = caluculateAverageNumbersOfACertainCharecter(output, i_NumOfBinaryNumbers, '1');//Gets average number of 1's from all string that were inserted.
             int i_HowManyArePowerOfTwo = checkHowManyArePowerOfTWO(output, i_NumOfBinaryNumbers);
             int HowManyAreAscendingSeries = checkHowManyAreAscendingSeries(output, i_NumOfBinaryNumbers);
             float i_averageOfNumbers = calculateAverageOfNumbers(output, i_NumOfBinaryNumbers);
@@ -54,7 +54,7 @@ namespace C20_Ex01_1
         
         private static float caluculateAverageNumbersOfACertainCharecter(string[] BinaryNumbers, int i_NumOfBinaryNumbers, char i_ChosenCharecter)//Calculates the average apperances of a cerain character in a string array.
         {
-            float i_numOfChars = 0;
+            float i_NumOfChars = 0;
 
             for (int i = 0; i < i_NumOfBinaryNumbers; i++)
             {
@@ -62,12 +62,12 @@ namespace C20_Ex01_1
                 {
                     if (BinaryNumbers[i][j] == i_ChosenCharecter)// For each character in the sring check if the chosen character.
                     {
-                        i_numOfChars++;
+                        i_NumOfChars++;
                     }
 
                 }
             }
-            float O_AverageNumberOfChar = i_numOfOnes / i_NumOfBinaryNumbers;// Calculate average number of a certain character.
+            float O_AverageNumberOfChar = i_NumOfChars / i_NumOfBinaryNumbers;// Calculate average number of a certain character.
             return O_AverageNumberOfChar; // Returns average number of a certain character.
         }
 
@@ -78,7 +78,7 @@ namespace C20_Ex01_1
             for (int i = 0; i < i_NumOfBinaryNumbers; i++)
             {
                 int i_BinaryNum = convertBinaryStringtToInt(i_BinaryNumbers[i]); //converts a string to the binary number that its represent.
-                if (IsPowerOfTwo(BinaryNum))
+                if (IsPowerOfTwo(i_BinaryNum))
                 {
                     o_AmountOfNumbersWhichIsPowerOfTwo++;
                 }

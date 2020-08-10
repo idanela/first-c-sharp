@@ -52,53 +52,53 @@ namespace C20_Ex01_1
             return true;
         }
         
-        private static float caluculateAverageNumbersOfACertainCharecter(string[] BinaryNumbers, int i_NumOfBinaryNumbers, char i_ChosenCharecter)//Calculates the average apperances of a cerain character in a string array.
+        private static float caluculateAverageNumbersOfACertainCharecter(string[] i_BinaryNumbers, int i_NumOfBinaryNumbers, char i_ChosenCharecter)//Calculates the average apperances of a cerain character in a string array.
         {
             float i_NumOfChars = 0;
 
             for (int i = 0; i < i_NumOfBinaryNumbers; i++)
             {
-                for (int j = 0; j < BinaryNumbers[i].Length; j++)
+                for (int j = 0; j < i_BinaryNumbers[i].Length; j++)
                 {
-                    if (BinaryNumbers[i][j] == i_ChosenCharecter)// For each character in the sring check if the chosen character.
+                    if (i_BinaryNumbers[i][j] == i_ChosenCharecter)// For each character in the sring check if the chosen character.
                     {
                         i_NumOfChars++;
                     }
 
                 }
             }
-            float O_AverageNumberOfChar = i_NumOfChars / i_NumOfBinaryNumbers;// Calculate average number of a certain character.
-            return O_AverageNumberOfChar; // Returns average number of a certain character.
+            float i_AverageNumberOfChar = i_NumOfChars / i_NumOfBinaryNumbers;// Calculate average number of a certain character.
+            return i_AverageNumberOfChar; // Returns average number of a certain character.
         }
 
 
         private static int checkHowManyArePowerOfTWO(string[] i_BinaryNumbers, int i_NumOfBinaryNumbers)// Checks how many strings (which represent a binary number) are a power of two.
         {
-            int o_AmountOfNumbersWhichIsPowerOfTwo = 0;
+            int i_AmountOfNumbersWhichIsPowerOfTwo = 0;
             for (int i = 0; i < i_NumOfBinaryNumbers; i++)
             {
-                int i_BinaryNum = convertBinaryStringtToInt(i_BinaryNumbers[i]); //converts a string to the binary number that its represent.
+                int i_BinaryNum = convertBinaryStringtToInt(i_BinaryNumbers[i]); //Converts a string to the binary number that its represent.
                 if (IsPowerOfTwo(i_BinaryNum))
                 {
-                    o_AmountOfNumbersWhichIsPowerOfTwo++;
+                    i_AmountOfNumbersWhichIsPowerOfTwo++;
                 }
             }
-            return o_AmountOfNumbersWhichIsPowerOfTwo;
+            return i_AmountOfNumbersWhichIsPowerOfTwo;
         }
 
 
         private static int convertBinaryStringtToInt(string i_BinaryNum) // convert a string that represent a binary number to it's decimal form.
         {
-            int o_ActualBinaryNumber = 0;
+            int i_ActualBinaryNumber = 0;
             int i_BinaryDigit;
             int i_CurrentPower = 1;
             for (int i = i_BinaryNum.Length - 1; i > 0; i++)
             {
                 i_BinaryDigit = i_BinaryNum[i] - '0';// Calculate the int value of the character.
-                o_ActualBinaryNumber += (i_CurrentPower * i_BinaryDigit);// Caculate the cuurent diggit nultiply iy by 2^i and add it to o_ActualBinaryNumber.
+                i_ActualBinaryNumber += (i_CurrentPower * i_BinaryDigit);// Caculate the cuurent digit nultiply iy by 2^i and add it to o_ActualBinaryNumber.
                 i_CurrentPower *= 2; //Prepare the current power for next iteration.
             }
-            return o_ActualBinaryNumber;
+            return i_ActualBinaryNumber;
         }
 
 
@@ -116,17 +116,17 @@ namespace C20_Ex01_1
 
         private static int checkHowManyAreAscendingSeries(string[] i_BinaryNumbers, int i_AmountOfBinaryNumbers)// Checks from an string array how many of them is an ascending series.
         {
-            int o_HowManyAreAscendingSeries = 0;
+            int i_HowManyAreAscendingSeries = 0;
             int i_BinaryNum;
             for (int i = 0; i < i_AmountOfBinaryNumbers; i++)
             {
-                i_BinaryNum = convertBinaryStringtToInt(i_BinaryNumbers[i]);//convert the string(of zeros and ones) to decimal representaion.
+                i_BinaryNum = convertBinaryStringtToInt(i_BinaryNumbers[i]);//Converts the string(of zeros and ones) to decimal representaion.
                 if (isAscendingSeries(i_BinaryNum)) //Checks if the number is an ascending series.
                 {
-                    o_HowManyAreAscendingSeries++;
+                    i_HowManyAreAscendingSeries++;
                 }
             }
-            return o_HowManyAreAscendingSeries;
+            return i_HowManyAreAscendingSeries;
         }
 
         private static float calculateAverageOfNumbers(string[] i_BinaryNumbers, int i_NumOfBinaryNumbers)
@@ -136,22 +136,21 @@ namespace C20_Ex01_1
             {
                 i_SumOfAllBinaryNumbers += convertBinaryStringtToInt(i_BinaryNumbers[i]);
             }
-            int o_Average = i_SumOfAllBinaryNumbers / i_NumOfBinaryNumbers;
-            return o_Average;
+            float i_Average = i_SumOfAllBinaryNumbers / i_NumOfBinaryNumbers;
+            return i_Average;
         }
 
-        private static bool isAscendingSeries(int i_BinaryNum)
+        private static bool isAscendingSeries(int i_BinaryNum)// Checks is a number's digits are ascending series.
         {
-            int i_CurrentLessSignificantNumber = i_BinaryNum % 10;
-            i_BinaryNum = i_BinaryNum / 10;
-            while(i_BinaryNum!=0)
+            int i_CurrentLessSignificantNumber;
+            while (i_BinaryNum!=0)
             {
-                if(i_BinaryNum%10<=i_CurrentLessSignificantNumber)
+                i_CurrentLessSignificantNumber = i_BinaryNum % 10;
+                i_BinaryNum = i_BinaryNum / 10;
+                if (i_BinaryNum % 10 <= i_CurrentLessSignificantNumber)//Checks if the 2 Least significant digits are acsending series.
                 {
                     return false;
                 }
-                int i_CurrentLessSignificantNumber = i_BinaryNum % 10;
-                i_BinaryNum = i_BinaryNum / 10;
             }
             return true;
         }

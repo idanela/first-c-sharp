@@ -114,7 +114,7 @@ namespace C20_Ex01_1
             }
         }
 
-        private static int checkHowManyAreAscendingSeries(string[] i_BinaryNumbers, inst i_AmountOfBinaryNumbers)// Checks from an string array how many of them is an ascending series.
+        private static int checkHowManyAreAscendingSeries(string[] i_BinaryNumbers, int i_AmountOfBinaryNumbers)// Checks from an string array how many of them is an ascending series.
         {
             int o_HowManyAreAscendingSeries = 0;
             int i_BinaryNum;

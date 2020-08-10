@@ -1,0 +1,2 @@
+C:\Users\elaza\Desktop\first-c-sharp\obj\Debug\C20_Ex01_1.csprojAssemblyReference.cache
+C:\Users\elaza\Desktop\first-c-sharp\obj\Debug\C20_Ex01_1.csproj.CoreCompileInputs.cache

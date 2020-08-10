@@ -28,11 +28,11 @@ namespace C20_Ex01_1
             }
             return i_BinaryStrings;
         }
-        private static void printDecimalRepresentationOfBinaryNumbers(string[] i_BinaryStrings, int i_NumberOfBinaryStrings) // takes a binary string array and print each binar string decimal representation. 
+        private static void printDecimalRepresentationOfBinaryNumbers(string[] i_BinaryStrings, int i_NumberOfBinaryStrings) // Takes a binary string array and print each binar string decimal representation. 
         {
             for (int i = 0; i < i_NumberOfBinaryStrings; i++)
             {
-                int i_DecimalRepresentaition = convertBinaryStringtToDecimalNumber(i_BinaryStrings[i]);
+                int i_DecimalRepresentaition = convertBinaryStringtToDecimalNumber(i_BinaryStrings[i]);//Convert the string to Deimal Number.
                 Console.Write(i_DecimalRepresentaition + ' ');
             }
         }

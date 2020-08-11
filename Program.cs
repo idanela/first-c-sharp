@@ -1,5 +1,5 @@
 ﻿using System;
-
+using System.Text;
 namespace C20_Ex01_1
 {
     class Program
@@ -40,28 +40,33 @@ namespace C20_Ex01_1
 
         public static void preformAnalysisOnBinaryStrings(string[] i_BinaryStrings, int i_NumberOfBinaryStrings) //Preform analysis on a few binary numbers.
         {
+           StringBuilder msg=new StringBuilder() ;
             float averageNumbersOfZeros = caluculateAverageNumbersOfACertainCharecterInStrings(i_BinaryStrings, i_NumberOfBinaryStrings, '0');//Gets average number of 0's from all string that were inserted.
             float averageNumbersOfOnes = caluculateAverageNumbersOfACertainCharecterInStrings(i_BinaryStrings, i_NumberOfBinaryStrings, '1');//Gets average number of 1's from all string that were inserted.
             int howManyArePowerOfTwo = checkHowManyArePowerOfTwo(i_BinaryStrings, i_NumberOfBinaryStrings);
             int howManyAreAscendingSeries = checkHowManyAreAscendingSeries(i_BinaryStrings, i_NumberOfBinaryStrings);
             float averageOfNumbers = calculateAverageOfNumbers(i_BinaryStrings, i_NumberOfBinaryStrings);
-            string averageNumberOfZeorsMsg = string.Format("There are {0} zeros in average.", averageNumbersOfZeros);
-            string averageNumberOfOnesMsg = string.Format("There are {0} ones in average.", averageNumbersOfOnes);
-            string amountOfNumberThatIsPowerOfTwoMsg = string.Format("There are {0} number which are power of two.", howManyArePowerOfTwo);
-            string amountOfNumbersThatConstituteAscendingSeriesMsg = string.Format("There are {0} number that constitute an ascending series.", howManyAreAscendingSeries);
-            string averageOfNumbersMsg = string.Format("The average of the numbers is {0}", averageOfNumbers);
-            printMessages(5,averageNumberOfZeorsMsg, averageNumberOfOnesMsg, amountOfNumberThatIsPowerOfTwoMsg,amountOfNumbersThatConstituteAscendingSeriesMsg,averageOfNumbersMsg);
+            CreateAndPrintMessages(5, averageNumbersOfZeros, averageNumbersOfOnes, howManyArePowerOfTwo, averageOfNumbers);
+           //msg.AppendFormat("There are {0} zeros in average.", averageNumbersOfZeros);
+           //msg.AppendFormat("There are {0} ones in average.", averageNumbersOfOnes);
+           //msg.AppendFormat("There are {0} number which are power of two.", howManyArePowerOfTwo);
+           //msg.AppendFormat("There are {0} number that constitute an ascending series.", howManyAreAscendingSeries);
+           //msg.AppendFormat("The average of the numbers is {0}", averageOfNumbers);
+          //  printMessages(5,averageNumberOfZeorsMsg, averageNumberOfOnesMsg, amountOfNumberThatIsPowerOfTwoMsg,amountOfNumbersThatConstituteAscendingSeriesMsg,averageOfNumbersMsg);
         }
 
-        private static void printMessages(int i_NumberOfStrings, params string[] i_Messages)
+        private static void CreateAndPrintMessages(int i_NumberOfResults,params object[] resultNumber)
         {
-            for (int i=0; i<i_NumberOfStrings; i++)
+            StringBuilder msg = new StringBuilder();
+            System.IO.StreamReader a=new System.IO.StreamReader(@"D:\Documents\GitHub\first - c - sharp\messages.txt");
+            for (int i=0; i< i_NumberOfResults; i++)
             {
-                Console.WriteLine(i_Messages[i]);
+               msg.AppendFormat( a.ReadLine(),resultNumber[i]);
+                Console.WriteLine(msg);
             }
         }
    
-        private static String getInputFromUser() //Gets input fron user.
+        public static String getInputFromUser() //Gets input fron user.
         {
             string binaryNumber = Console.ReadLine();
             return binaryNumber;

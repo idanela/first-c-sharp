@@ -1,0 +1,2 @@
+D:\Documents\GitHub\first-c-sharp\C20_Ex01_5\obj\Debug\C20_Ex01_5.csprojAssemblyReference.cache
+D:\Documents\GitHub\first-c-sharp\C20_Ex01_5\obj\Debug\C20_Ex01_5.csproj.CoreCompileInputs.cache

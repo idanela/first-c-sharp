@@ -36,20 +36,37 @@ namespace C20_Ex01_1
                 Console.Write(i_DecimalRepresentaition + ' ');
             }
         }
-        public static void preformAnalysisOnBinaryStrings(string[]i_BinaryStrings,int i_NumberOfBinaryStrings) //Preform analysis on a few binary numbers.
+
+        public static void preformAnalysisOnBinaryStrings(string[] i_BinaryStrings, int i_NumberOfBinaryStrings) //Preform analysis on a few binary numbers.
         {
-            float i_AverageNumbersOfZero = caluculateAverageNumbersOfACertainCharecter(i_BinaryStrings, i_NumberOfBinaryStrings, '0');//Gets average number of 0's from all string that were inserted.
+            float i_AverageNumbersOfZeros = caluculateAverageNumbersOfACertainCharecter(i_BinaryStrings, i_NumberOfBinaryStrings, '0');//Gets average number of 0's from all string that were inserted.
             float i_AverageNumbersOfOnes = caluculateAverageNumbersOfACertainCharecter(i_BinaryStrings, i_NumberOfBinaryStrings, '1');//Gets average number of 1's from all string that were inserted.
             int i_HowManyArePowerOfTwo = checkHowManyArePowerOfTwo(i_BinaryStrings, i_NumberOfBinaryStrings);
-            int HowManyAreAscendingSeries = checkHowManyAreAscendingSeries(i_BinaryStrings, i_NumberOfBinaryStrings);
+            int i_HowManyAreAscendingSeries = checkHowManyAreAscendingSeries(i_BinaryStrings, i_NumberOfBinaryStrings);
             float i_averageOfNumbers = calculateAverageOfNumbers(i_BinaryStrings, i_NumberOfBinaryStrings);
+            string averageZeors = string.Format("There are {0} zeros in average.", i_AverageNumbersOfZeros);
+            string averageOnes = string.Format("There are {0} ones in average.", i_AverageNumbersOfOnes);
+            string amountOfNumberThatIsPowerOfTwo = string.Format("There are {0} number which are power of two.", i_HowManyArePowerOfTwo);
+            string amountOfNumbersThatConstituteAscendingSeries = string.Format("There are {0} number that constitute an ascending series.", i_HowManyAreAscendingSeries);
+            string averageOfNumbers = string.Format("The average of the numbers is {0}", i_averageOfNumbers);
+            printStrings(5,averageZeors,averageOnes,amountOfNumberThatIsPowerOfTwo,amountOfNumbersThatConstituteAscendingSeries,averageOfNumbers);
+
         }
-     
+
+        private static void printStrings(int i_NumberOfStrings, params string[] messages)
+        {
+            for (int i=0; i<i_NumberOfStrings; i++)
+            {
+                Console.WriteLine(messages[i]);
+            }
+        }
+   
         private static String getInputFromUser() //Gets input fron user.
         {
             string i_BinaryNumber = Console.ReadLine();
             return i_BinaryNumber;
         }
+
         private static bool checkIfInputIsValid(string i_binaryNum)// Checks if a string has 8 characters and only 1's and 0's.
         {
             if (i_binaryNum.Length != 8) // If the number is not an 8-bit number its not valid.
@@ -98,8 +115,7 @@ namespace C20_Ex01_1
             }
             return i_AmountOfNumbersWhichArePowerOfTwo;
         }
-
-
+        
         private static int convertBinaryStringtToDecimalNumber(string i_BinaryNum) // convert a string that represent a binary number to it's decimal form.
         {
             int i_ActualDecimalNumber = 0;
@@ -113,8 +129,7 @@ namespace C20_Ex01_1
             }
             return i_ActualDecimalNumber;
         }
-
-
+        
         private static bool IsPowerOfTwo(int i_NumWhichIsPossiblePowerOfTwo)// return about a number if it is a power of two.
         { 
             if (i_NumWhichIsPossiblePowerOfTwo!=1 &&(i_NumWhichIsPossiblePowerOfTwo & (i_NumWhichIsPossiblePowerOfTwo - 1)) == 0)// if the number is a power of two , then (number-1 will have lower-order bits set.

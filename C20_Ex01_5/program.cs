@@ -1,11 +1,13 @@
 ﻿using System;
+
 namespace C20_Ex01_5
 {
+    using C20_Ex01_1;
     public class program
     {
         public static void Main()
         {
-            string numberToAnalyze= getInputFromUser();
+            string numberToAnalyze= Program.getInputFromUser();
             preformStatisticAnalysis(numberToAnalyze);    
         }
        
@@ -14,7 +16,7 @@ namespace C20_Ex01_5
             int largestDigit = FindMaxNumInString(i_numberToAnalyze);
             int smallestDigit = FindMinNumInString(i_numberToAnalyze);
             int amountOfNumbersDividedByFour = howManyDividedByNum(i_numberToAnalyze,4);
-            int amountOfBiggerFromUnityDigit = howManyBiggerThanUnityDigit(i_numberToAnalyze);
+            int amountOfDigitsBiggerFromUnityDigit = howManyBiggerThanUnityDigit(i_numberToAnalyze);
             string maxMessage = string.Format("the maximal digit is {0}", largestDigit);
             string MinimalDigit = string.Format("the minimal digit is {0}", smallestDigit);
 

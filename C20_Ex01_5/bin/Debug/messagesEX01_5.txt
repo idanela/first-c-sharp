@@ -1,0 +1,7 @@
+The maximal digit is {0}.
+The minimal digit is {0}.
+The amount of numbers divided by four is {0}.
+The amount of digits that is bigger than unity digit is {0}.
+
+
+

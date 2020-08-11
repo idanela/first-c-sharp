@@ -1,31 +1,42 @@
 ﻿using System;
 using System.Text;
+using System.IO;
 namespace C20_Ex01_1
 {
     public class Program
     {
         public static void Main()
         {
-            int numberOfBinaryStrings = 4;
-            string[] i_BinaryStrings = GetBinaryStringsFromUser(numberOfBinaryStrings);
+            BinarySeries(4);
+        }
+        public static void BinarySeries(int i_NumberOfBinarySeries)
+        {
+            string[] i_BinaryStrings = GetBinaryStringsFromUser(i_NumberOfBinarySeries);
             Console.WriteLine("the decimal representations of the binary numbers above are: ");
-            printDecimalRepresentationOfBinaryNumbers(i_BinaryStrings, numberOfBinaryStrings);
-            preformAnalysisOnBinaryStrings(i_BinaryStrings, numberOfBinaryStrings);
+            printDecimalRepresentationOfBinaryNumbers(i_BinaryStrings, i_NumberOfBinarySeries);
+            preformAnalysisOnBinaryStrings(i_BinaryStrings, i_NumberOfBinarySeries);
         }
 
         public static string[] GetBinaryStringsFromUser(int i_SizeOfStringArray)
         {
-            string[] binaryStrings = new string[i_SizeOfStringArray]; //allocates a string array which will hold the numbers from user's input.
+            StringBuilder[] binaryStringsBuilders = new StringBuilder[i_SizeOfStringArray]; //allocates a string array which will hold the numbers from user's input.
             Console.WriteLine("please enter 4 numbers in a binary format, 8 digit each: ");
             for (int i = 0; i < i_SizeOfStringArray; i++)
             {
-                binaryStrings[i] = getInputFromUser();
-                bool v_IsValidBinaryNum = checkIfInputIsValid(binaryStrings[i]); // Checks if the user inserted a valid string(8 number string of 1's and 0's).
+                binaryStringsBuilders[i] = new StringBuilder();
+                binaryStringsBuilders[i].Insert(0, Console.ReadLine()) ;
+                bool v_IsValidBinaryNum = checkIfInputIsValidRanged(binaryStringsBuilders[i],'0','1',8); // Checks if the user inserted a valid string(8 number string of 1's and 0's).
                 if (v_IsValidBinaryNum == false) 
                 {
                     Console.WriteLine("the input you have entered is invalid. please try again. ");
                     i = 0; //If one of the numbers is invalid, gets new input.
                 }
+
+            }
+            string []binaryStrings= new string[i_SizeOfStringArray];
+            for(int i=0; i<i_SizeOfStringArray; i++)
+            {
+                binaryStrings[i] = binaryStringsBuilders[i].ToString();
             }
             return binaryStrings;
         }
@@ -34,7 +45,7 @@ namespace C20_Ex01_1
             for (int i = 0; i < i_NumberOfBinaryStrings; i++)
             {
                 int decimalRepresentaition = convertBinaryStringtToDecimalNumber(i_BinaryStrings[i]);//Convert the string to Deimal Number.
-                Console.Write(decimalRepresentaition + ' ');
+                Console.WriteLine(decimalRepresentaition );
             }
         }
 
@@ -46,41 +57,30 @@ namespace C20_Ex01_1
             int howManyArePowerOfTwo = checkHowManyArePowerOfTwo(i_BinaryStrings, i_NumberOfBinaryStrings);
             int howManyAreAscendingSeries = checkHowManyAreAscendingSeries(i_BinaryStrings, i_NumberOfBinaryStrings);
             float averageOfNumbers = calculateAverageOfNumbers(i_BinaryStrings, i_NumberOfBinaryStrings);
-            CreateAndPrintMessages(5, averageNumbersOfZeros, averageNumbersOfOnes, howManyArePowerOfTwo, averageOfNumbers);
-           //msg.AppendFormat("There are {0} zeros in average.", averageNumbersOfZeros);
-           //msg.AppendFormat("There are {0} ones in average.", averageNumbersOfOnes);
-           //msg.AppendFormat("There are {0} number which are power of two.", howManyArePowerOfTwo);
-           //msg.AppendFormat("There are {0} number that constitute an ascending series.", howManyAreAscendingSeries);
-           //msg.AppendFormat("The average of the numbers is {0}", averageOfNumbers);
-          //  printMessages(5,averageNumberOfZeorsMsg, averageNumberOfOnesMsg, amountOfNumberThatIsPowerOfTwoMsg,amountOfNumbersThatConstituteAscendingSeriesMsg,averageOfNumbersMsg);
+            CreateAndPrintMessages(5, "messages.txt", averageNumbersOfZeros, averageNumbersOfOnes, howManyArePowerOfTwo, howManyAreAscendingSeries, averageOfNumbers);
         }
 
-        private static void CreateAndPrintMessages(int i_NumberOfResults,params object[] resultNumber)
+        public static void CreateAndPrintMessages(int i_NumberOfResults,string i_FileName,params object[] resultNumber)
         {
             StringBuilder msg = new StringBuilder();
-            System.IO.StreamReader a=new System.IO.StreamReader(@"D:\Documents\GitHub\first - c - sharp\messages.txt");
+            StreamReader a=new StreamReader(i_FileName);
             for (int i=0; i< i_NumberOfResults; i++)
             {
-               msg.AppendFormat( a.ReadLine(),resultNumber[i]);
+               msg.AppendFormat(a.ReadLine(),resultNumber[i]);
                 Console.WriteLine(msg);
+                msg.Clear();
             }
         }
-   
-        public static String getInputFromUser() //Gets input fron user.
-        {
-            string binaryNumber = Console.ReadLine();
-            return binaryNumber;
-        }
 
-        private static bool checkIfInputIsValid(string i_BinaryNums)// Checks if a string has 8 characters and only 1's and 0's.
+      public static bool checkIfInputIsValidRanged(StringBuilder i_BinaryNums,char i_From,char i_To ,int i_LengthOfValidInput)// Checks if a string has 8 characters and only 1's and 0's.
         {
-            if (i_BinaryNums.Length != 8) // If the number is not an 8-bit number its not valid.
+            if (i_BinaryNums.Length != i_LengthOfValidInput) // If the number is not an 8-bit number its not valid.
             {
                 return false;
             }
             for (int i = 0; i < i_BinaryNums.Length; i++)
             {
-                if (i_BinaryNums[i] != '1' && i_BinaryNums[i] != '0')// If the number is not containing only 1's and 0's its not valid.
+                if (i_BinaryNums[i] < i_From || i_BinaryNums[i] > i_To)// If the number is not containing only 1's and 0's its not valid.
                 {
                     return false;
                 }
@@ -125,7 +125,7 @@ namespace C20_Ex01_1
             int actualDecimalNumber = 0;
             int binaryDigit;
             int currentPower = 1;
-            for (int i = i_BinaryNum.Length - 1; i > 0; i++)
+            for (int i = i_BinaryNum.Length - 1; i >= 0; i--)
             {
                 binaryDigit = i_BinaryNum[i] - '0';// Calculate the int value of the character.
                 actualDecimalNumber += (currentPower * binaryDigit);// Caculate the cuurent digit nultiply iy by 2^i and add it to o_ActualBinaryNumber.

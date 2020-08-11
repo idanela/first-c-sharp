@@ -1,0 +1,5 @@
+There are {0} zeros in average.
+There are {0} ones in average.
+There are {0} number which are power of two.
+There are {0} number that constitute an ascending series.
+The average of the numbers is {0}.

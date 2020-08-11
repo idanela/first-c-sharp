@@ -1,25 +1,41 @@
 ﻿using System;
+using System.Text;
+using C20_Ex01_1;
+
 
 namespace C20_Ex01_5
 {
-    using C20_Ex01_1;
     public class program
     {
         public static void Main()
         {
-            string numberToAnalyze= Program.getInputFromUser();
-            preformStatisticAnalysis(numberToAnalyze);    
+            preformStatisticAnalysis();    
         }
        
-        public static void preformStatisticAnalysis(string i_numberToAnalyze)
+        public static void preformStatisticAnalysis()
         {
-            int largestDigit = FindMaxNumInString(i_numberToAnalyze);
-            int smallestDigit = FindMinNumInString(i_numberToAnalyze);
-            int amountOfNumbersDividedByFour = howManyDividedByNum(i_numberToAnalyze,4);
-            int amountOfDigitsBiggerFromUnityDigit = howManyBiggerThanUnityDigit(i_numberToAnalyze);
-            string maxMessage = string.Format("the maximal digit is {0}", largestDigit);
-            string MinimalDigit = string.Format("the minimal digit is {0}", smallestDigit);
+            
+            string numberToAnalyze = getValidInputFromUser();
+            int largestDigit = FindMaxNumInString(numberToAnalyze);
+            int smallestDigit = FindMinNumInString(numberToAnalyze);
+            int amountOfNumbersDividedByFour = howManyDividedByNum(numberToAnalyze,4);
+            int amountOfDigitsBiggerFromUnityDigit = howManyBiggerThanUnityDigit(numberToAnalyze);
+            Program.CreateAndPrintMessages(4, "messagesEX01_5.txt", largestDigit, smallestDigit, amountOfNumbersDividedByFour, amountOfDigitsBiggerFromUnityDigit);
+        }
 
+        private static string getValidInputFromUser()
+        {
+            StringBuilder numberAsAString = new StringBuilder();
+            bool v_IsValidInput = false;
+            while(v_IsValidInput==false)
+            {
+                numberAsAString.Append(Console.ReadLine());
+                if (Program.checkIfInputIsValidRanged(numberAsAString, '0', '9',8))
+                {
+                    v_IsValidInput = true;
+                }
+            }
+            return numberAsAString.ToString();
         }
         private static bool checkIfValid8DigitNumber(string i_DigitsSrting)
         {
@@ -43,7 +59,7 @@ namespace C20_Ex01_5
 
         private static int FindMaxNumInString(string i_numberToAnalyze)
         {
-            int max = i_numberToAnalyze[0];
+            int max = i_numberToAnalyze[0]-'0';
             int valueAsDecimalNumber;
             for(int i=1; i<i_numberToAnalyze.Length; i++)
             {
@@ -59,12 +75,12 @@ namespace C20_Ex01_5
         private static int FindMinNumInString(string i_numberToAnalyze)
         {
             
-            int min = i_numberToAnalyze[0];
+            int min = i_numberToAnalyze[0]-'0';
             int valueAsDecimalNumber;
             for (int i = 1; i < i_numberToAnalyze.Length; i++)
             {
                 valueAsDecimalNumber = i_numberToAnalyze[i] - '0';
-                if (valueAsDecimalNumber > min)
+                if (valueAsDecimalNumber < min)
                 {
                     min = valueAsDecimalNumber;
                 }

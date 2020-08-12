@@ -1,0 +1,12 @@
+D:\Documents\GitHub\first-c-sharp\C20_Ex01_5\obj\Debug\C20_Ex01_5.csprojAssemblyReference.cache
+D:\Documents\GitHub\first-c-sharp\C20_Ex01_5\obj\Debug\C20_Ex01_5.csproj.CoreCompileInputs.cache
+C:\Users\elaza\Desktop\first-c-sharp\C20_Ex01_5\bin\Debug\C20_Ex01_5.pdb
+C:\Users\elaza\Desktop\first-c-sharp\C20_Ex01_5\bin\Debug\C20_Ex01_1.pdb
+C:\Users\elaza\Desktop\first-c-sharp\C20_Ex01_5\bin\Debug\C20_Ex01_1.exe.config
+C:\Users\elaza\Desktop\first-c-sharp\C20_Ex01_5\obj\Debug\C20_Ex01_5.csprojAssemblyReference.cache
+C:\Users\elaza\Desktop\first-c-sharp\C20_Ex01_5\obj\Debug\C20_Ex01_5.csproj.CoreCompileInputs.cache
+C:\Users\elaza\Desktop\first-c-sharp\C20_Ex01_5\obj\Debug\C20_Ex01_5.csproj.CopyComplete
+C:\Users\elaza\Desktop\first-c-sharp\C20_Ex01_5\obj\Debug\C20_Ex01_5.pdb
+C:\Users\elaza\Desktop\first-c-sharp\C20_Ex01_5\bin\Debug\C20_Ex01_5.exe
+C:\Users\elaza\Desktop\first-c-sharp\C20_Ex01_5\obj\Debug\C20_Ex01_5.exe
+C:\Users\elaza\Desktop\first-c-sharp\C20_Ex01_5\bin\Debug\C20_Ex01_1.exe

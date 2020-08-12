@@ -1,11 +1,9 @@
 ﻿using System;
 using System.Text;
-using C20_Ex01_1;
-
 
 namespace C20_Ex01_5
 {
-    public class program
+    public class Program
     {
         public static void Main()
         {
@@ -19,7 +17,7 @@ namespace C20_Ex01_5
             int smallestDigit = FindMinNumInString(numberToAnalyze);// Finds Minimal number in number's string.
             int amountOfNumbersDividedByFour = howManyDigitsAreDividedByNum(numberToAnalyze,4); //Counts how many of the numbers are divided by 4 with no reminder.
             int amountOfDigitsBiggerFromUnityDigit = howManyBiggerThanUnityDigit(numberToAnalyze);// Counts how many digits in the number are bigger thant it's unity digit.
-            Program.CreateAndPrintMessages(4, "messagesEX01_5.txt", largestDigit, smallestDigit, amountOfNumbersDividedByFour, amountOfDigitsBiggerFromUnityDigit); //prints messages regarding the data above.
+            C20_Ex01_1.Program.CreateAndPrintMessages(4, "messagesEX01_5.txt", largestDigit, smallestDigit, amountOfNumbersDividedByFour, amountOfDigitsBiggerFromUnityDigit); //prints messages regarding the data above.
         }
 
         private static string getValidInputFromUser() // Gets input from user until we get valid input.
@@ -30,7 +28,7 @@ namespace C20_Ex01_5
             while(v_IsValidInput==false)
             {
                 numberAsAString = Console.ReadLine();
-                if (Program.checkIfInputIsValidRanged(numberAsAString, '0', '9',8))// checks if the string is in range(0'-'9') and in proper length.
+                if (C20_Ex01_1.Program.checkIfInputIsValidRanged(numberAsAString, '0', '9',8))// checks if the string is in range(0'-'9') and in proper length.
                 {
                     v_IsValidInput = true;
                 }
@@ -72,6 +70,7 @@ namespace C20_Ex01_5
             }
             return min;
         }
+
         private static int howManyDigitsAreDividedByNum(string i_numberToAnalyze, int i_numTobeDividedBy)// Counts how many digits are divided by a certain number.
         {
             int numOfDigitsDividedByFour = 0;
@@ -84,6 +83,7 @@ namespace C20_Ex01_5
             }
             return numOfDigitsDividedByFour;
         }
+
         private static bool isDigitDividedByNum(char i_Digit, int i_numTobeDividedBy)//Checks if a certain digit is divided by i_numToBeDivideBy with no remonder.
         {
             int digit= i_Digit - '0';// Caculates the integer value of character.
@@ -96,6 +96,7 @@ namespace C20_Ex01_5
                 return false;
             }
         }
+
         private static int howManyBiggerThanUnityDigit(string i_numberToAnalyze)//Counts how many digits are bigger than unity digit.
         {
             int amountOfNumbersBiggerThanUnityDigit = 0;

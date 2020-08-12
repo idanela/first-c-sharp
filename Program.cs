@@ -39,6 +39,7 @@ namespace C20_Ex01_1
             }
             return binaryStrings;
         }
+
         private static void printDecimalRepresentationOfBinaryNumbers(string[] i_BinaryStrings, int i_NumberOfBinaryStrings) // Takes a binary string array and print each binary string decimal representation. 
         {
             for (int i = 0; i < i_NumberOfBinaryStrings; i++)

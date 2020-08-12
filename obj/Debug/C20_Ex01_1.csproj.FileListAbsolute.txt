@@ -5,7 +5,6 @@ D:\Documents\GitHub\first-c-sharp\obj\Debug\C20_Ex01_1.csproj.CoreCompileInputs.
 D:\Documents\GitHub\first-c-sharp\obj\Debug\C20_Ex01_1.pdb
 D:\Documents\GitHub\first-c-sharp\bin\Debug\C20_Ex01_1.exe.config
 D:\Documents\GitHub\first-c-sharp\bin\Debug\C20_Ex01_1.exe
-D:\Documents\GitHub\first-c-sharp\obj\Debug\C20_Ex01_1.csprojAssemblyReference.cache
 D:\Documents\GitHub\first-c-sharp\obj\Debug\C20_Ex01_1.exe
 C:\Users\elaza\Desktop\first-c-sharp\bin\Debug\C20_Ex01_1.pdb
 C:\Users\elaza\Desktop\first-c-sharp\obj\Debug\C20_Ex01_1.pdb

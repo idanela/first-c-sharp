@@ -10,3 +10,11 @@ C:\Users\elaza\Desktop\first-c-sharp\C20_Ex01_5\obj\Debug\C20_Ex01_5.pdb
 C:\Users\elaza\Desktop\first-c-sharp\C20_Ex01_5\bin\Debug\C20_Ex01_5.exe
 C:\Users\elaza\Desktop\first-c-sharp\C20_Ex01_5\obj\Debug\C20_Ex01_5.exe
 C:\Users\elaza\Desktop\first-c-sharp\C20_Ex01_5\bin\Debug\C20_Ex01_1.exe
+D:\Documents\GitHub\first-c-sharp\C20_Ex01_5\obj\Debug\C20_Ex01_5.exe
+D:\Documents\GitHub\first-c-sharp\C20_Ex01_5\obj\Debug\C20_Ex01_5.pdb
+D:\Documents\GitHub\first-c-sharp\C20_Ex01_5\bin\Debug\C20_Ex01_5.exe
+D:\Documents\GitHub\first-c-sharp\C20_Ex01_5\bin\Debug\C20_Ex01_5.pdb
+D:\Documents\GitHub\first-c-sharp\C20_Ex01_5\bin\Debug\C20_Ex01_1.exe
+D:\Documents\GitHub\first-c-sharp\C20_Ex01_5\bin\Debug\C20_Ex01_1.pdb
+D:\Documents\GitHub\first-c-sharp\C20_Ex01_5\bin\Debug\C20_Ex01_1.exe.config
+D:\Documents\GitHub\first-c-sharp\C20_Ex01_5\obj\Debug\C20_Ex01_5.csproj.CopyComplete

@@ -11,3 +11,4 @@ C:\Users\elaza\Desktop\first-c-sharp\obj\Debug\C20_Ex01_1.pdb
 C:\Users\elaza\Desktop\first-c-sharp\bin\Debug\C20_Ex01_1.exe.config
 C:\Users\elaza\Desktop\first-c-sharp\bin\Debug\C20_Ex01_1.exe
 C:\Users\elaza\Desktop\first-c-sharp\obj\Debug\C20_Ex01_1.exe
+D:\Documents\GitHub\first-c-sharp\obj\Debug\C20_Ex01_1.csprojAssemblyReference.cache

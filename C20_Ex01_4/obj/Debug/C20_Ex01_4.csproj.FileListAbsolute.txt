@@ -1,0 +1,11 @@
+D:\Documents\GitHub\first-c-sharp\C20_Ex01_4\obj\Debug\C20_Ex01_4.csprojAssemblyReference.cache
+D:\Documents\GitHub\first-c-sharp\C20_Ex01_4\obj\Debug\C20_Ex01_4.csproj.CoreCompileInputs.cache
+D:\Documents\GitHub\first-c-sharp\C20_Ex01_4\bin\Debug\C20_Ex01_4.exe.config
+D:\Documents\GitHub\first-c-sharp\C20_Ex01_4\bin\Debug\C20_Ex01_4.exe
+D:\Documents\GitHub\first-c-sharp\C20_Ex01_4\bin\Debug\C20_Ex01_4.pdb
+D:\Documents\GitHub\first-c-sharp\C20_Ex01_4\bin\Debug\C20_Ex01_1.exe
+D:\Documents\GitHub\first-c-sharp\C20_Ex01_4\bin\Debug\C20_Ex01_1.pdb
+D:\Documents\GitHub\first-c-sharp\C20_Ex01_4\bin\Debug\C20_Ex01_1.exe.config
+D:\Documents\GitHub\first-c-sharp\C20_Ex01_4\obj\Debug\C20_Ex01_4.csproj.CopyComplete
+D:\Documents\GitHub\first-c-sharp\C20_Ex01_4\obj\Debug\C20_Ex01_4.exe
+D:\Documents\GitHub\first-c-sharp\C20_Ex01_4\obj\Debug\C20_Ex01_4.pdb

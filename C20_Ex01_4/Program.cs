@@ -1,5 +1,5 @@
 ﻿using System;
-
+using System.Text;
 namespace C20_EX01_4
 {
     public class Program
@@ -10,19 +10,40 @@ namespace C20_EX01_4
         }
         public static void stringAnalysis()
         {
-            int decimalRepresentation;
+          
+            long decimalRepresentation;
             string letterString = getValidLetterStringFroUser();
+            StringBuilder msg = new StringBuilder(letterString);
             bool v_IsPalidrom = isTheStringAPalindrom(letterString, 0, letterString.Length - 1);
-            bool v_IsNumberString = int.TryParse(letterString, out decimalRepresentation);
-
+            bool v_IsNumberString = long.TryParse(letterString, out decimalRepresentation);
+            if (v_IsPalidrom==true)
+            {
+                msg.Append(", is a Palindrom");
+            }
+            else
+            {
+                msg.Append(", is not a Palindrom");
+            }
             if (v_IsNumberString == true)
             {
-                bool v_isDividedBythree = CheckIfDividedByThree(decimalRepresentation);
+                bool v_IsDividedBythree = CheckIfDividedByCertainNum(decimalRepresentation,3);
+               if(v_IsDividedBythree==true)
+                {
+                    msg.Append(", and divided by three with no reminder");
+                }
+               else
+                {
+                    msg.Append(", and doesn't divided by three with no reminder");
+
+                }
             }
             else
             {
                 int howManyLowerCase = CountLowerCase(letterString);
+                msg.AppendFormat(", and has {0} lowercase letters. ", howManyLowerCase);
             }
+
+            Console.WriteLine(msg);
         }
         public static string getValidLetterStringFroUser()
         {
@@ -30,10 +51,10 @@ namespace C20_EX01_4
             bool v_IsValidInput = false;
 
             Console.WriteLine("please enter twelve letter string");
-            while (v_IsValidInput)
+            while (v_IsValidInput == false)
             {
                 letterString = Console.ReadLine();
-                if (C20_Ex01_1.Program.checkIfInputIsValidRanged(letterString, 'a', 'z', 12) == true || C20_Ex01_1.Program.checkIfInputIsValidRanged(letterString, 'A', 'Z', 12) == true || C20_Ex01_1.Program.checkIfInputIsValidRanged( letterString, '0', '9', 12) == true)
+                if ( C20_Ex01_1.Program.checkIfInputIsValidRanged( letterString, '0', '9', 12) == true|| (C20_Ex01_1.Program.checkIfInputIsValidRanged(letterString, 'A', 'z', 12) == true && C20_Ex01_1.Program.checkIfInputIsValidRanged(letterString, '[', '`', 12) == false))
                 {
                     v_IsValidInput = true;
                 }
@@ -48,7 +69,7 @@ namespace C20_EX01_4
         {
             bool v_IsPalindrom;
 
-            if (i_To - i_From == 1 || i_To - i_From == 0)
+            if (i_To <= i_From)
             {
                 v_IsPalindrom = true;
             }
@@ -63,9 +84,9 @@ namespace C20_EX01_4
             return v_IsPalindrom;
         }
 
-        public static bool CheckIfDividedByThree(int i_PotentialDividedByThreeNumber)
+        public static bool CheckIfDividedByCertainNum(long i_PotentialDividedByThreeNumber,int i_Num)
         {
-            return (i_PotentialDividedByThreeNumber % 3 == 0);
+            return (i_PotentialDividedByThreeNumber % i_Num == 0);
         }
 
 
@@ -83,15 +104,15 @@ namespace C20_EX01_4
 
         public static int CountLowerCase(string i_LetterString)
         {
-            int numOfUppercase = 0;
+            int numOfLowercase = 0;
             for (int i = 0; i < i_LetterString.Length; i++)
             {
-                if (C20_Ex01_1.Program.checkIfInputIsValidRanged(i_LetterString[i].ToString(), 'a', 'z', 12) == true)
+                if (C20_Ex01_1.Program.checkIfInputIsValidRanged(i_LetterString[i].ToString(), 'a', 'z', 1) == true)
                 {
-                    numOfUppercase++;
+                    numOfLowercase++;
                 }
             }
-            return numOfUppercase;
+            return numOfLowercase;
         }
     }
 }

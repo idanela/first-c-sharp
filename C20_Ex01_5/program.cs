@@ -15,8 +15,11 @@ namespace C20_Ex01_5
             int smallestDigit = FindMinNumInString(numberToAnalyze);// Finds Minimal number in number's string.
             int amountOfNumbersDividedByFour = howManyDigitsAreDividedByNum(numberToAnalyze, 4); //Counts how many of the numbers are divided by 4 with no reminder.
             int amountOfDigitsBiggerFromUnityDigit = howManyBiggerThanUnityDigit(numberToAnalyze);// Counts how many digits in the number are bigger thant it's unity digit.
-
-            C20_Ex01_1.Program.CreateAndPrintMessages(4, "messagesEX01_5.txt", largestDigit, smallestDigit, amountOfNumbersDividedByFour, amountOfDigitsBiggerFromUnityDigit); //prints messages regarding the data above.
+            string msg = string.Format(@" {0} is the largest digit from the digits above.
+{1} is the smallest digit from the digits above.
+There are {2} digits that are divided by four with no reminder. 
+There are {4} digits that are bigger than unity digit", largestDigit, smallestDigit, amountOfNumbersDividedByFour, amountOfDigitsBiggerFromUnityDigit);
+            Console.WriteLine(msg);
         }
 
         private static string getValidInputFromUser() // Gets input from user until we get valid input.

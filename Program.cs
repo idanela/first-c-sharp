@@ -54,19 +54,15 @@ namespace C20_Ex01_1
             int howManyArePowerOfTwo = checkHowManyArePowerOfTwo(i_BinaryStrings, i_NumberOfBinaryStrings);
             int howManyAreAscendingSeries = checkHowManyAreAscendingSeries(i_BinaryStrings, i_NumberOfBinaryStrings);
             float averageOfNumbers = calculateAverageOfNumbers(i_BinaryStrings, i_NumberOfBinaryStrings);
-
-            CreateAndPrintMessages(5, "messages.txt", averageNumbersOfZeros, averageNumbersOfOnes, howManyArePowerOfTwo, howManyAreAscendingSeries, averageOfNumbers);
+            string msg = string.Format(@"There are {0} zero in average.
+There are {1} ones in averge.
+There are {2} numbers that constitute a power of two.
+There are {3} numbers that their digits constitute an ascending series.
+The average of the numbers is {4}", averageNumbersOfZeros, averageNumbersOfOnes, howManyArePowerOfTwo, howManyAreAscendingSeries, averageOfNumbers);
+            Console.WriteLine(msg);
         }
 
-        public static void CreateAndPrintMessages(int i_NumberOfResults, string i_FileName, params object[] resultNumber)
-        { 
-            StreamReader filePointer = new StreamReader(i_FileName);
-            for (int i=0; i < i_NumberOfResults; i++)
-            { 
-               string msg=string.Format(filePointer.ReadLine(), resultNumber[i]);
-                Console.WriteLine(msg);
-            }
-        }
+       
 
       public static bool checkIfInputIsValidRanged(string i_BinaryNums, char i_From, char i_To , int i_LengthOfValidInput)// Checks if a string has 8 characters and only 1's and 0's.
         {

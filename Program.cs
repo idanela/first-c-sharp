@@ -21,14 +21,14 @@ namespace C20_Ex01_1
         public static string[] GetBinaryStringsFromUser(int i_SizeOfStringArray)
         {
             string[] binaryStrings = new string [i_SizeOfStringArray]; //allocates a string array which will hold the numbers from user's input.
-            bool v_IsValidBinaryNum;
+            bool isValidBinaryNum;
 
             Console.WriteLine("please enter 4 numbers in a binary format, 8 digit each: ");
             for (int i = 0; i < i_SizeOfStringArray; i++)
             { 
                 binaryStrings[i] = Console.ReadLine() ;
-                v_IsValidBinaryNum = checkIfInputIsValidRanged(binaryStrings[i],'0','1', 8); // Checks if the user inserted a valid string(8 number string of 1's and 0's).
-                if (v_IsValidBinaryNum == false) 
+                isValidBinaryNum = checkIfInputIsValidRanged(binaryStrings[i],'0','1', 8); // Checks if the user inserted a valid string(8 number string of 1's and 0's).
+                if (isValidBinaryNum == false) 
                 {
                     Console.WriteLine("the input you have entered is invalid. please try again.");
                     i = -1; //If one of the numbers is invalid, gets new input.
@@ -62,23 +62,22 @@ The average of the numbers is {4}", averageNumbersOfZeros, averageNumbersOfOnes,
             Console.WriteLine(msg);
         }
 
-       
-
       public static bool checkIfInputIsValidRanged(string i_BinaryNums, char i_From, char i_To , int i_LengthOfValidInput)// Checks if a string has 8 characters and only 1's and 0's.
         {
-            bool v_IsValidString = true;
-            if (i_BinaryNums.Length != i_LengthOfValidInput) // If the number is not an 8-bit number its not valid.
+            bool isValidString = (i_BinaryNums.Length == i_LengthOfValidInput);// If the number has proper length its valid.;
+
+            if (isValidString == true) //If the lengh is proper, check the content.
             {
-                v_IsValidString = false;
-            }
-            for (int i = 0; i < i_BinaryNums.Length; i++)
-            {
-                if (i_BinaryNums[i] < i_From || i_BinaryNums[i] > i_To)// If the number is not containing only 1's and 0's its not valid.
+                for (int i = 0; i < i_BinaryNums.Length; i++)
                 {
-                    v_IsValidString = false;
+                    isValidString = (i_BinaryNums[i] >= i_From && i_BinaryNums[i] <= i_To);// If the number is not in range its not valid.
+                    if (isValidString == false)
+                    {
+                        break;
+                    }
                 }
             }
-            return v_IsValidString;
+            return isValidString;
         }
         
         private static float caluculateAverageNumbersOfACertainCharecterInStrings(string[] i_BinaryNumbers, int i_NumberOfBinaryStrings, char i_ChosenCharacter)//Calculates the average apperances of a cerain character in a string array.
@@ -167,17 +166,18 @@ The average of the numbers is {4}", averageNumbersOfZeros, averageNumbersOfOnes,
         private static bool isAscendingSeries(int i_PotentialAscendingSeriesNumber)// Checks is a number's digits are ascending series.
         {
             int currentLeastSignificantDigit;
-            bool v_IsAscendingSeries = true;
+            bool isAscendingSeries = true;
             while(i_PotentialAscendingSeriesNumber != 0)
             {
                 currentLeastSignificantDigit = i_PotentialAscendingSeriesNumber % 10;
                 i_PotentialAscendingSeriesNumber = i_PotentialAscendingSeriesNumber / 10;
-                if (currentLeastSignificantDigit <= i_PotentialAscendingSeriesNumber % 10)
+                isAscendingSeries = (currentLeastSignificantDigit <= i_PotentialAscendingSeriesNumber % 10);
+                if(isAscendingSeries == false)
                 {
-                    v_IsAscendingSeries = false;
+                    break;
                 }
             }
-            return v_IsAscendingSeries;
+            return isAscendingSeries;
         }
     }
    

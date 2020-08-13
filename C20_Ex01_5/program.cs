@@ -8,7 +8,7 @@ namespace C20_Ex01_5
             preformStatisticAnalysis();
         }
 
-        public static void preformStatisticAnalysis()
+        private static void preformStatisticAnalysis()
         {
             string numberToAnalyze = getValidInputFromUser();
             int largestDigit = FindMaxNumInString(numberToAnalyze);// Finds maximal number in number's string.
@@ -18,22 +18,22 @@ namespace C20_Ex01_5
             string msg = string.Format(@" {0} is the largest digit from the digits above.
 {1} is the smallest digit from the digits above.
 There are {2} digits that are divided by four with no reminder. 
-There are {4} digits that are bigger than unity digit", largestDigit, smallestDigit, amountOfNumbersDividedByFour, amountOfDigitsBiggerFromUnityDigit);
+There are {3} digits that are bigger than unity digit", largestDigit, smallestDigit, amountOfNumbersDividedByFour, amountOfDigitsBiggerFromUnityDigit);
             Console.WriteLine(msg);
         }
 
         private static string getValidInputFromUser() // Gets input from user until we get valid input.
         {
             string numberAsAString = "";
-            bool v_IsValidInput = false;
+            bool isValidInput = false;
 
             Console.WriteLine("please enter an eigth digit decimal number");
-            while (v_IsValidInput == false)
+            while (isValidInput == false)
             {
                 numberAsAString = Console.ReadLine();
                 if (C20_Ex01_1.Program.checkIfInputIsValidRanged(numberAsAString, '0', '9', 8))// checks if the string is in range(0'-'9') and in proper length.
                 {
-                    v_IsValidInput = true;
+                    isValidInput = true;
                 }
                 else
                 {

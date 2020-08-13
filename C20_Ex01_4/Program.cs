@@ -10,36 +10,25 @@ namespace C20_EX01_4
         }
         public static void stringAnalysis()
         {
-          
             long decimalRepresentation;
             string letterString = getValidLetterStringFroUser();
             StringBuilder msg = new StringBuilder(letterString);
-            bool v_IsPalidrom = isTheStringAPalindrom(letterString, 0, letterString.Length - 1);
-            bool v_IsNumberString = long.TryParse(letterString, out decimalRepresentation);
-            if (v_IsPalidrom==true)
-            {
-                msg.Append(", is a Palindrom");
-            }
-            else
-            {
-                msg.Append(", is not a Palindrom");
-            }
-            if (v_IsNumberString == true)
-            {
-                bool v_IsDividedBythree = CheckIfDividedByCertainNum(decimalRepresentation,3);
-               if(v_IsDividedBythree==true)
-                {
-                    msg.Append(", and divided by three with no reminder");
-                }
-               else
-                {
-                    msg.Append(", and doesn't divided by three with no reminder");
+            bool isPalidrom = isTheStringAPalindrom(letterString, 0, letterString.Length - 1);
 
-                }
+            ChoseStringToAppend(ref msg, isPalidrom, " is a plaindrom", " is not a plaindrom");
+         
+            bool isNumberString = long.TryParse(letterString, out decimalRepresentation);
+
+            if (isNumberString == true)
+            {
+                bool isDividedBythree = CheckIfDividedByCertainNum(decimalRepresentation,3);
+
+                ChoseStringToAppend(ref msg, isDividedBythree, " and divided by three with no reminder", ", and doesn't divided by three with no reminder");
             }
             else
             {
                 int howManyLowerCase = CountLowerCase(letterString);
+
                 msg.AppendFormat(", and has {0} lowercase letters. ", howManyLowerCase);
             }
 
@@ -47,18 +36,15 @@ namespace C20_EX01_4
         }
         public static string getValidLetterStringFroUser()
         {
-            string letterString = "";
-            bool v_IsValidInput = false;
+            string letterString = string.Empty;
+            bool isValidInput = false;
 
             Console.WriteLine("please enter twelve letter string");
-            while (v_IsValidInput == false)
+            while (isValidInput == false)
             {
                 letterString = Console.ReadLine();
-                if ( C20_Ex01_1.Program.checkIfInputIsValidRanged( letterString, '0', '9', 12) == true|| (C20_Ex01_1.Program.checkIfInputIsValidRanged(letterString, 'A', 'z', 12) == true && C20_Ex01_1.Program.checkIfInputIsValidRanged(letterString, '[', '`', 12) == false))
-                {
-                    v_IsValidInput = true;
-                }
-                else
+                isValidInput = (C20_Ex01_1.Program.checkIfInputIsValidRanged(letterString, '0', '9', 12) == true || (C20_Ex01_1.Program.checkIfInputIsValidRanged(letterString, 'A', 'z', 12) == true && C20_Ex01_1.Program.checkIfInputIsValidRanged(letterString, '[', '`', 12) == false));
+               if(isValidInput == false)
                 {
                     Console.WriteLine("the input you have entered is invalid. please try again.");
                 }
@@ -67,21 +53,29 @@ namespace C20_EX01_4
         }
         public static bool isTheStringAPalindrom(string i_LetterString, int i_From, int i_To)
         {
-            bool v_IsPalindrom;
-
-            if (i_To <= i_From)
+            bool isPalindrom;
+            isPalindrom = (i_To <= i_From);
+            if(isPalindrom == false)
             {
-                v_IsPalindrom = true;
+                isPalindrom = i_LetterString[i_From] == i_LetterString[i_To];
+                if(isPalindrom == false)
+                {
+                    isPalindrom = isTheStringAPalindrom(i_LetterString, i_From + 1, i_To - 1);
+                }
             }
-            else if (i_LetterString[i_From] != i_LetterString[i_To])
-            {
-                v_IsPalindrom = false;
-            }
-            else
-            {
-                v_IsPalindrom = isTheStringAPalindrom(i_LetterString, i_From + 1, i_To - 1);
-            }
-            return v_IsPalindrom;
+            //if (i_To <= i_From)
+            //{
+            //    isPalindrom = true;
+            //}
+            //else if (i_LetterString[i_From] != i_LetterString[i_To])
+            //{
+            //    isPalindrom = false;
+            //}
+            //else
+            //{
+            //    isPalindrom = isTheStringAPalindrom(i_LetterString, i_From + 1, i_To - 1);
+            //}
+            return isPalindrom;
         }
 
         public static bool CheckIfDividedByCertainNum(long i_PotentialDividedByThreeNumber,int i_Num)
@@ -113,6 +107,18 @@ namespace C20_EX01_4
                 }
             }
             return numOfLowercase;
+        }
+        public static void ChoseStringToAppend(ref StringBuilder msg, bool i_IsCondition, string i_FirstMessage, string i_SecondMessage)
+        {
+            if (i_IsCondition == true)
+            {
+                msg.Append(i_FirstMessage);
+            }
+            else
+            {
+                msg.Append(i_SecondMessage);
+            }
+
         }
     }
 }
